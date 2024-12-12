@@ -11,11 +11,13 @@ function deleteParticipant(index: number) {
   nbParticipant.value = nbParticipant.value - 1
 }
 
-watch(nbParticipant, () => {
-  participants.value = []
-  for (let index = 0; index < nbParticipant.value; index++) {
-    let result = index + 1
-    participants.value.push(result.toString())
+watch(nbParticipant, (newValue, oldValue) => {
+  if (newValue > oldValue) {
+    for (let i = oldValue; i < newValue; i++) {
+      participants.value.push(`Participant ${i + 1}`)
+    }
+  } else if (newValue < oldValue) {
+    participants.value.splice(newValue)
   }
 })
 </script>
