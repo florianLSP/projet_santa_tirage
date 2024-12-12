@@ -28,7 +28,7 @@ watch(nbParticipant, (newValue, oldValue) => {
       <h1 class="p-10 text-5xl">Qui offre quoi ?</h1>
 
       <div class="flex items-center space-x-4">
-        <label for="">Sélectionnez le nombre de participants:</label>
+        <label for="nbParticipants">Sélectionnez le nombre de participants:</label>
         <input
           type="number"
           class="w-20 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
@@ -39,14 +39,15 @@ watch(nbParticipant, (newValue, oldValue) => {
       <div v-if="participants.length > 0" class="flex flex-col">
         <div
           v-for="(participant, index) in participants"
-          :key="participant"
+          :key="index"
           class="flex items-center space-x-4 mt-5"
         >
           <input
             type="text"
             class="w-64 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-            :placeholder="`Participant n°${participant}`"
+            :placeholder="participant"
           />
+
           <button
             @click="deleteParticipant(index)"
             class="flex items-center justify-center rounded-md bg-red-600 p-2 text-white hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-600"
