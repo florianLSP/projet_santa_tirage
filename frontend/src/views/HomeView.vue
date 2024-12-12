@@ -8,7 +8,7 @@ const participants: Ref<Array<string>> = ref([])
 
 function deleteParticipant(index: number) {
   participants.value.splice(index, 1)
-  nbParticipant.value = nbParticipant.value - 1
+  nbParticipant.value = participants.value.length
 }
 
 watch(nbParticipant, (newValue, oldValue) => {
